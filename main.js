@@ -124,14 +124,6 @@ Highcharts.getJSON(
 
           return header + restrictions + totalValue + licensed + total;
         },
-
-        dataLabels: {
-          enabled: false,
-          format: "{point.name}",
-        },
-        accessibility: {
-          exposeAsGroupOnly: true,
-        },
       },
 
       plotOptions: {
