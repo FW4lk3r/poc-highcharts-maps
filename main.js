@@ -2,15 +2,18 @@ const data = [
   {
     name: "Portugal",
     CountryAbrv: "PT",
-    Description: "sdadasd",
+    Description: "This country has a lot of restrictions",
     HasRestrictionsToApply: true,
+    HasRestrictionsToApplyColor: "red",
     TotalValueNotLicensed: 105,
     LicensedToOtherOwners: "5",
   },
   {
     name: "Spain",
     CountryAbrv: "SP",
-    Description: "dafsdfasdf",
+    Description: "This country has not a lot of restrictions",
+    HasRestrictionsToApply: false,
+    HasRestrictionsToApplyColor: "#31784B",
     TotalValueNotLicensed: 40,
     LicensedToOtherOwners: "2",
   },
@@ -95,7 +98,43 @@ Highcharts.getJSON(
       },
 
       tooltip: {
-        pointFormat: "{point.Description}",
+        shared: true,
+        useHTML: true,
+        formatter: function () {
+          const {
+            name,
+            CountryAbrv,
+            Description,
+            HasRestrictionsToApply,
+            HasRestrictionsToApplyColor,
+            TotalValueNotLicensed,
+            LicensedToOtherOwners,
+          } = this.point;
+
+          const header = `<div><span style="font-weight: bold">${name}</span> (${CountryAbrv})</div><br>
+          <div>${Description}</div><br>`;
+
+          let restrictions = "";
+          if (HasRestrictionsToApply == true) {
+            restrictions = `<div style="font-weight: bold; color: ${HasRestrictionsToApplyColor}">Has Restrictions to apply </div><br>`;
+          }
+
+          const totalValue = `<div>Total Value Not Licensed: ${TotalValueNotLicensed}</div><br>`;
+          const licensed = `<div>Licensed to other owners: ${LicensedToOtherOwners}</div><br>`;
+          const total = `<div>Total: ${
+            TotalValueNotLicensed + LicensedToOtherOwners
+          }</div><br>`;
+
+          return header + restrictions + totalValue + licensed + total;
+        },
+
+        dataLabels: {
+          enabled: false,
+          format: "sadfas{point.name}",
+        },
+        accessibility: {
+          exposeAsGroupOnly: true,
+        },
       },
 
       plotOptions: {
