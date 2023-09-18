@@ -1,0 +1,17 @@
+[
+  {
+    "CountryName": "Portugal",
+    "CountryAbrv": "PT",
+    "Description": "sdadasd",
+    "HasRestrictionsToApply": true,
+    "TotalValueNotLicensed": 105,
+    "LicensedToOtherOwners": "5"
+  },
+  {
+    "CountryName": "Spain",
+    "CountryAbrv": "SP",
+    "Description": "dafsdfasdf",
+    "TotalValueNotLicensed": 40,
+    "LicensedToOtherOwners": "2"
+  }
+]
