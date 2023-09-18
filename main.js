@@ -67,13 +67,10 @@ Highcharts.getJSON(
       chart: {
         map: topology,
       },
-
       legend: {
         enabled: false,
       },
-
       credits: false,
-
       mapNavigation: {
         enabled: true,
         enableDoubleClickZoomTo: true,
@@ -130,7 +127,7 @@ Highcharts.getJSON(
 
         dataLabels: {
           enabled: false,
-          format: "sadfas{point.name}",
+          format: "{point.name}",
         },
         accessibility: {
           exposeAsGroupOnly: true,
@@ -174,6 +171,12 @@ Highcharts.getJSON(
           },
           accessibility: {
             exposeAsGroupOnly: true,
+          },
+          events: {
+            click: function (e) {
+              //pass the $parameters.actions from the OS
+              console.log(e.point);
+            },
           },
         },
       ],
